@@ -1,6 +1,5 @@
 package com.scott.smokesville.ui.screens.dashboard
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
