@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.scott.smokesville.R
 import com.scott.smokesville.ui.theme.appBackgroundColor
 import com.scott.smokesville.ui.theme.appContentColor
+import com.scott.smokesville.ui.theme.currentTempColor
 import com.scott.smokesville.ui.viewmodels.DashboardViewModel
 
 @Composable
@@ -25,7 +26,7 @@ fun DashboardContent(
 }
 
 @Composable
-fun DisplayTemperature() {
+fun DisplayTargetTemperature() {
     Surface(
         modifier = Modifier.fillMaxWidth(),
         color = MaterialTheme.colors.appBackgroundColor,
@@ -36,12 +37,14 @@ fun DisplayTemperature() {
                 .fillMaxWidth()
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .height(IntrinsicSize.Min),
-                horizontalArrangement = Arrangement.Center,
+                horizontalArrangement = Arrangement.Center
             ) {
                 Box(
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
                         .fillMaxHeight(),
                     contentAlignment = Alignment.Center
                 ) {
@@ -67,7 +70,8 @@ fun DisplayTemperature() {
                     textAlign = TextAlign.Center
                 )
                 Box(
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier
+                        .weight(1f)
                         .fillMaxHeight(),
                     contentAlignment = Alignment.Center
                 ) {
@@ -89,8 +93,57 @@ fun DisplayTemperature() {
     }
 }
 
+@Composable
+fun DisplayCurrentTemperature() {
+    Surface(
+        modifier = Modifier.fillMaxWidth(),
+        color = MaterialTheme.colors.appBackgroundColor,
+        shape = RectangleShape
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = stringResource(id = R.string.current_temperature_colon),
+                    color = MaterialTheme.colors.appContentColor,
+                    style = MaterialTheme.typography.subtitle1,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = "250",
+                    color = MaterialTheme.colors.currentTempColor,
+                    style = MaterialTheme.typography.h1,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+            }
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
-fun DisplayTemperaturePreview() {
-    DisplayTemperature()
+fun DisplayCurrentTemperaturePreview() {
+    DisplayCurrentTemperature()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DisplayTargetTemperaturePreview() {
+    DisplayTargetTemperature()
 }

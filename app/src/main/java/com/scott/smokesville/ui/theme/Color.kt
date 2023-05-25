@@ -13,7 +13,13 @@ val LightGray = Color(0xFFFCFCFC)
 val MediumGray = Color(0xFF9C9C9C)
 val DarkGray = Color(0xFF141414)
 
-val Colors.topAppBarContentColor : Color
+val DarkRed = Color(0xFF8B0000)
+
+val Colors.currentTempColor: Color
+    @Composable
+    get() = DarkRed
+
+val Colors.topAppBarContentColor: Color
     @Composable
     get() = if(isLight) Color.White else LightGray
 
@@ -21,7 +27,7 @@ val Colors.topAppBarBackgroundColor: Color
     @Composable
     get() = if(isLight) Purple500 else Color.Black
 
-val Colors.appContentColor : Color
+val Colors.appContentColor: Color
     @Composable
     get() = if(isLight) Color.Black else Color.White
 
