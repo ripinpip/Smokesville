@@ -10,9 +10,7 @@ import com.scott.smokesville.ui.theme.topAppBarContentColor
 import com.scott.smokesville.ui.viewmodels.DashboardViewModel
 
 @Composable
-fun DashboardAppBar(
-    dashboardViewModel: DashboardViewModel
-) {
+fun DashboardAppBar() {
     TopAppBar(
         title = {
             Text(
@@ -27,7 +25,5 @@ fun DashboardAppBar(
 @Preview
 @Composable
 fun PreviewDashboardAppBar() {
-    DashboardAppBar(
-        dashboardViewModel = DashboardViewModel()
-    )
+    DashboardAppBar()
 }

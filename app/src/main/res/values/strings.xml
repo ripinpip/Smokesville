@@ -3,4 +3,5 @@
     <string name="subtract">Subtract</string>
     <string name="add">Add</string>
     <string name="current_temperature_colon">Current Temperature:</string>
+    <string name="target_temperature_colon">Target Temperature:</string>
 </resources>

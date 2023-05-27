@@ -1,5 +1,6 @@
 package com.scott.smokesville.ui.screens.dashboard
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -13,29 +14,45 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.scott.smokesville.R
-import com.scott.smokesville.ui.theme.appBackgroundColor
+import com.scott.smokesville.ui.theme.SmokesvilleTheme
 import com.scott.smokesville.ui.theme.appContentColor
 import com.scott.smokesville.ui.theme.currentTempColor
-import com.scott.smokesville.ui.viewmodels.DashboardViewModel
 
 @Composable
-fun DashboardContent(
-    dashboardViewModel: DashboardViewModel
-) {
-
+fun DashboardContent() {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        DisplayCurrentTemperature()
+        DisplayTargetTemperature()
+    }
 }
 
 @Composable
 fun DisplayTargetTemperature() {
     Surface(
         modifier = Modifier.fillMaxWidth(),
-        color = MaterialTheme.colors.appBackgroundColor,
+        color = MaterialTheme.colors.background,
         shape = RectangleShape
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
         ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(IntrinsicSize.Min),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text = stringResource(id = R.string.target_temperature_colon),
+                    color = MaterialTheme.colors.appContentColor,
+                    style = MaterialTheme.typography.subtitle1,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -97,7 +114,7 @@ fun DisplayTargetTemperature() {
 fun DisplayCurrentTemperature() {
     Surface(
         modifier = Modifier.fillMaxWidth(),
-        color = MaterialTheme.colors.appBackgroundColor,
+        color = MaterialTheme.colors.background,
         shape = RectangleShape
     ) {
         Column(
@@ -136,14 +153,12 @@ fun DisplayCurrentTemperature() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun DisplayCurrentTemperaturePreview() {
-    DisplayCurrentTemperature()
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DisplayTargetTemperaturePreview() {
-    DisplayTargetTemperature()
+fun DisplayDashboardContent() {
+    SmokesvilleTheme {
+        Surface {
+            DashboardContent()
+        }
+    }
 }
